@@ -1,0 +1,28 @@
+.box {
+  background: white;
+  padding: 15px;
+  margin-bottom: 22px;
+  text-align: center;
+  font-size: 18px;
+  border: 1px dashed #00000045;
+  font-weight: 400;
+}
+
+.plain-button {
+  background: none;
+  border: none;
+}
+
+html {
+  scroll-behavior: auto !important;
+}
+
+.card-register {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.card-register ul {
+  text-align: left;
+}
