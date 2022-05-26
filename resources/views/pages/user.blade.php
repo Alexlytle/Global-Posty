@@ -27,22 +27,27 @@
                     <p>Country: {{$user->country}}</p>
                     <p>State: {{$user->state}}</p>
                     <p>City:{{$user->placename}} </p>
-                    @if (auth()->user()->id !== $user->id)
-                        <a href="{{route('send',$user)}}"> Message Me!</a>
-                    @endif
+                    @auth
+                         @if (auth()->user()->id !== $user->id)
+                            <a href="{{route('send',$user)}}"> Message Me!</a>
+                        @endif
+                    @endauth
+                   
                 </div>
             </div>
             <div class="col-md-8">
+
+                    {{-- @livewire('user-post',['userId']) --}}
                     <!-- Modal -->
-                 
-                @foreach ($posts as $index=>$post)
+                    @livewire('search-post',['userId'=>$user->id])
+                {{-- @foreach ($posts as $index=>$post)
             
                             <x-post :post="$post" :index="$index" :blocked="$blocked" />
 
                  @endforeach
                  <div class="d-flex">
                     {!! $posts->links() !!}
-                </div>
+                </div> --}}
         </div>
      
         </div>

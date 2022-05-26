@@ -12,4 +12,8 @@ class Like extends Model
     protected $fillable = [
         'user_id'
     ];
+    public function belongs(User $user)
+    {
+        return contains('user_id',$user->id);
+    }
 }

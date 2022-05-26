@@ -3,7 +3,7 @@
     <div class="main-panel">
         <div class="content-wrapper">
             @include('backend.inc.message')
-            <h4>Manage Category</h4>
+            <h4>Manage Users</h4>
             <div class="row justify-content-center">
 
 
@@ -83,11 +83,13 @@
                                         @empty
                                             <td>No users to display</td>
                                         @endforelse
-
+                                          
 
 
                                     </tbody>
+                                   
                                 </table>
+                                {!! $users->links() !!}
                             </div>
                         </div>
                     </div>

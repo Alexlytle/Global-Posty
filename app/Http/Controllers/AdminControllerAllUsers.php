@@ -16,7 +16,7 @@ class AdminControllerAllUsers extends Controller
      */
     public function index()
     {
-        $users = User::whereNotIn('id',[1])->get();
+        $users = User::whereNotIn('id',[1])->paginate(10);
 
         return view('backend.user.index',compact('users'));
         

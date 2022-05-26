@@ -1,13 +1,15 @@
 <?php
 
-use App\Models\Post;
+// use App\Models\Post;
 use App\Models\User;
 use App\Events\Hello;
 use App\Models\BlockUser;
+use App\Http\Livewire\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ChatController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
+use App\Http\Livewire\Post as LivewirePost;
 use App\Http\Controllers\ContactsController;
 use App\Http\Controllers\UserPostController;
 use App\Http\Controllers\AdminSpamController;
@@ -27,12 +29,7 @@ use App\Http\Controllers\AdminControllerBlockedUsers;
 |
 */
 
-Route::get('/tester', function () {
 
-    $user =  User::get();
-    dd($user[0]->blocked);
-    // return view('pages.home');
-});
 
 // Route::get('/broadcast', function () {
 //     broadcast(new Hello());
@@ -52,11 +49,12 @@ Route::get('/dashboard/change-password',[UserDashboardController::class,'changep
 Route::get('/dashboard/user-info',[UserDashboardController::class,'userInfo'])->name('user-info');
 Route::get('/dashboard/deactivate-account',[UserDashboardController::class,'deactivateaccount'])->name('deactivate-account');
 Route::get('/dashboard/location',[UserDashboardController::class,'add_location'])->name('add_location');
+
 //crud
 Route::delete('/dashboard/{id}/delete-block',[UserDashboardController::class,'delete_block'])->name('delete_block');
 Route::post('/dashboard/update/update-location',[UserDashboardController::class,'update_location'])->name('update_location');
-
 Route::post('/dashboard/{user}/user-info',[UserDashboardController::class,'update_user_info'])->name('update_user_info');
+
 
 
 // Route::post('/posts/{post}/like',[LikeController::class,'store'])->name('posts.like');
@@ -67,18 +65,27 @@ Route::delete('/posts/{post}/likes', [LikeController::class, 'destroy'])->name('
 Route::post('/posts/{post}/report',[PostController::class,'report'])->name('posts.report');
 
 
-Route::resource('/', PostController::class);
+// Route::resource('/', PostController::class);
+Route::get('/',function ()
+{
+        return view('pages.home');
 
-Route::get('/chat',[ChatController::class,'index'])->name('chat');
-Route::get('/chat/{user}/send',[ChatController::class,'send'])->name('send');
-Route::post('/chat/send',[ChatController::class,'send_post'])->name('send.post');
+})->middleware('guest');
 
 
+
+Route::get('/posts',[PostController::class,'index'])->name('posts');
+
+Route::group(['middleware'=>'auth'],function(){
+        Route::get('/chat',[ChatController::class,'index'])->name('chat');
+        Route::get('/chat/{user}/send',[ChatController::class,'send'])->name('send');
+        Route::post('/chat/send',[ChatController::class,'send_post'])->name('send.post');
+});
 //search
 
-Route::get('/location/{placename}/placename',[LocationSearchController::class,'getPlaceName'])->name('placename');
-Route::get('/location/{country}/country',[LocationSearchController::class,'getCountry'])->name('country');
-Route::get('/location/{state}/state',[LocationSearchController::class,'getState'])->name('state');
+Route::get('/location/{placename}/{type}',[LocationSearchController::class,'getPlaceName'])->name('location');
+// Route::get('/location/{country}/{country}',[LocationSearchController::class,'getCountry'])->name('country');
+// Route::get('/location/{state}/state',[LocationSearchController::class,'getState'])->name('state');
 
 
 Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
@@ -87,6 +94,8 @@ Route::group(['prefix'=>'dashboard','middleware'=>'auth'],function(){
         Route::resource('/users', AdminControllerAllUsers::class);
         Route::resource('/spam', AdminSpamController::class);
 });
+
+
 
 Route::get('/search',function(){
         return view('pages.search');

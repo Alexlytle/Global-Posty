@@ -27,7 +27,7 @@ class ReportPost extends Model
     }
     public function post()
     {
-        return $this->hasOne(Post::class,'id','user_id');
+        return $this->hasOne(Post::class,'id','id');
     }
 
     public function userinfo($user_id)

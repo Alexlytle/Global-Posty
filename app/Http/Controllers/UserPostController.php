@@ -33,10 +33,12 @@ class UserPostController extends Controller
                 'blocked'=>$blockIds,
                 'user' => $user,
             ]);
+        }else{
+            return view('pages.user', [
+                'posts' => $posts,
+                'user' => $user,
+            ]);
         }
-        return view('pages.user', [
-            'posts' => $posts,
-            'user' => $user,
-        ]);
+       
     }
 }

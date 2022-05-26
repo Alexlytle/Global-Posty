@@ -34,7 +34,12 @@ class Post extends Model
     {
         return $this->hasMany(ReportPost::class);
     }
+    public function ownedBy($userId = null)
+    {
+         $userId = $userId ?: auth()->id();
 
+         return $this->user_id === $userId;
+    }
 
  
 }

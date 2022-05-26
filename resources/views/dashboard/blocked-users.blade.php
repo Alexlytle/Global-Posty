@@ -38,7 +38,7 @@
                                               <form action="{{route('delete_block',$block->id)}}" method="post">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit">Unblock</button>
+                                                <button class="btn btn-primary" type="submit">Unblock</button>
                                               </form>
                                             </td>
                                          

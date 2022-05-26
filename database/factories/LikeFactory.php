@@ -17,8 +17,8 @@ class LikeFactory extends Factory
     public function definition()
     {
         return [
-            'user_id'=>$this->faker->unique(true)->numberBetween(1,15),
-            'post_id' =>$this->faker->sentence,
+            'user_id'=>$this->faker->unique(true)->numberBetween(1,10),
+            'post_id' =>$this->faker->numberBetween(1,10),
         ];
     }
 }

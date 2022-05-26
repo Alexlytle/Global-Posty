@@ -21,7 +21,7 @@
          
                 <div class="modal fade" id="exampleModal{{$post->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <form action="{{ route('posts.report', $post) }}" method="post" class="mr-1">
+                        <form  class="mr-1">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">Report {{$post->user->name}}</h5>
@@ -41,10 +41,7 @@
                                                     <option value="Spam">Spam</option>
                                                     <option value="Other">Other</option>
                                                 </select>
-                                            </div>
-                                    
-                                           
-                                                
+                                            </div>          
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

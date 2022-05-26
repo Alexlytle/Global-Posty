@@ -9,12 +9,12 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <a class="nav-link" data-toggle="collapse" href="#auth1" aria-expanded="false" aria-controls="auth">
                     <i class="mdi mdi-circle-outline menu-icon"></i>
                     <span class="menu-title">Users</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="auth">
+                <div class="collapse" id="auth1">
                     <ul class="nav flex-column sub-menu">
                        
                         <li class="nav-item"> <a class="nav-link" href="{{ route('users.index') }}">Manage</a></li>
@@ -23,12 +23,12 @@
             </li>
        
             <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <a class="nav-link" data-toggle="collapse" href="#auth2" aria-expanded="false" aria-controls="auth">
                     <i class="mdi mdi-circle-outline menu-icon"></i>
                     <span class="menu-title">Blocked Users</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="auth">
+                <div class="collapse" id="auth2">
                     <ul class="nav flex-column sub-menu">
                        
                         <li class="nav-item"> <a class="nav-link" href="{{ route('blocked.index') }}">Manage</a></li>
@@ -37,12 +37,12 @@
             </li>
 
             <li class="nav-item ">
-                <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                <a class="nav-link" data-toggle="collapse" href="#auth3" aria-expanded="false" aria-controls="auth">
                     <i class="mdi mdi-circle-outline menu-icon"></i>
                     <span class="menu-title">Reported Users</span>
                     <i class="menu-arrow"></i>
                 </a>
-                <div class="collapse" id="auth">
+                <div class="collapse" id="auth3">
                     <ul class="nav flex-column sub-menu">
                        
                         <li class="nav-item"> <a class="nav-link" href="{{ route('spam.index') }}">Manage</a></li>

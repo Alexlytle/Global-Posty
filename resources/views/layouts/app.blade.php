@@ -19,9 +19,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script> --}}
+     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
+    @livewireStyles
 </head>
 <body>
     <div id="app">
+    
         <nav class="navbar navbar-expand-lg navbar-light bg-white">
             <div class="container">
                 <a class="navbar-brand" href="/">Global Posty</a>
@@ -45,15 +49,18 @@
                   </ul>
                   <ul class="navbar-nav  me-3">
                       @auth
-                   
                       <li class="nav-item">
                         <a class="nav-link" href="{{route('dash-home')}}">Welcome, {{auth()->user()->name}}</a>
                       </li>
                       <li class="nav-item">
+                        <a class="nav-link" href="{{route('search')}}">Search</a>
+                      </li>
+                   
+                      <li class="nav-item">
                         <a class="nav-link " href="{{route('chat')}}">Chat</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" href="{{route('search')}}">Search</a>
+                        <a class="nav-link" href="{{route('posts')}}">View Posts</a>
                       </li>
                       <li class="nav-item">
                         <form action="{{ route('logout') }}" method="post" >
@@ -61,18 +68,25 @@
                             <button style="background: none;border:none;" class="nav-link" type="submit">Logout</button>
                         </form>
                     </li>
-               
-                 
-
+              
                       @endauth
+                      @guest
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('search')}}">Search</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{{route('posts')}}">View Posts</a>
+                      </li>
+                      @endguest
                     
                   </ul>
                 </div>
             </div>
            
           </nav>
-
+          
         <main >
+        
             @yield('content')
         </main>
 
@@ -83,10 +97,13 @@
       <footer class="py-3 my-4">
         
         </ul>
-        <p class="text-center text-muted"> 2022 Example Application Created By WebField Design </p>
+        <p class="text-center text-muted"> 2022 Example Application Created By Alexander Lytle </p>
       </footer>
     </div>
-   
+ 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    {{-- @livewire('livewire-ui-modal') --}}
+    @stack('scripts')
+    @livewireScripts
 </body>
 </html>

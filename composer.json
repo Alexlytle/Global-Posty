@@ -17,7 +17,9 @@
         "laravel/fortify": "^1.10",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "pusher/pusher-php-server": "~4.0"
+        "livewire/livewire": "^2.10",
+        "pusher/pusher-php-server": "~4.0",
+        "wire-elements/modal": "^1.0"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.6",

@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+
 use App\Models\BlockUser;
 use App\Models\ReportPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Post;
 
 class PostController extends Controller
 {
@@ -19,12 +20,13 @@ class PostController extends Controller
      */
     public function index()
     {
+
         $posts = Post::latest()->paginate(10);
         $blockUsers = '';
         if(auth()->check()){
             if(auth()->user()->id !== 1){
                 $blockUsers = BlockUser::where('user_id',auth()->user()->id)->get();
-                // dd($blockUsers);
+               
                 $blockIds = array();
         
                 foreach ($blockUsers as $value) {
@@ -39,13 +41,17 @@ class PostController extends Controller
             }
            
         }else{
+      
+            $blockIds = null;
+            
             return view('posts.index', [
                 'posts' => $posts,
+                'blocked'=>$blockIds 
             ]);
         }
-    
-        // dd($blockIds);
-      
+
+            // return view('posts.index');
+
      
     }
     /*

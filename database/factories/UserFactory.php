@@ -26,8 +26,10 @@ class UserFactory extends Factory
             'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'country' => $this->faker->country,
+            'placename'=>$this->faker->city,
+            'state'=>$this->faker->state,
             'email_verified_at' => now(),
-            'password' => 'Tester550', // password
+            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
         ];
     }

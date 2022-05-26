@@ -102,7 +102,9 @@
                                         @empty
                                             <td>No  any reported ads to display</td>
                                         @endforelse
-
+                                        <div class="d-flex">
+                                            {!! $spams->links() !!}
+                                        </div>
 
 
                                     </tbody>
